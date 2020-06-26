@@ -1,3 +1,23 @@
+body{
+  background: #212121;
+}
+.card{
+  margin: 16px;
+  padding: 16px;
+  background: #313131;
+  color: white;
+  border-radius: 12px;
+}
+
+.check-select{
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.check-select .form-check{
+  margin-left: 16px;
+}
+
 .App {
   text-align: center;
 }
