@@ -30,7 +30,13 @@ export default class Home extends Component {
             <div style={{ color: "#fff", textAlign: "center" }}>
 
                 <div style={{ margin: 32 }}>
+
                     <h1 style={{ fontSize: "2rem" }}>{this.state.chan}</h1>
+                    <h2>Complemento a1</h2>
+                    <h1 style={{ fontSize: "2rem" }}>{this.state.chan}</h1>
+                    <h2>Complemento a2</h2>
+                    <h1 style={{ fontSize: "2rem" }}>{this.state.chan}</h1>
+                    <h2>Resultado</h2>
 
                     <div className="">
                         <div class="form-check form-check-inline">
@@ -60,6 +66,13 @@ export default class Home extends Component {
                         <input onChange={this.inputChange} type="text" name="n1" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="101100" />
                         <small id="emailHelp" class="form-text text-muted">Intenta con 101010110101</small>
                     </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Segundo numero</label>
+                        <input onChange={this.inputChange} type="text" name="n1" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="101100" />
+                        <small id="emailHelp" class="form-text text-muted">Intenta con 101010110101</small>
+                    </div>
+
                     <div className="">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
