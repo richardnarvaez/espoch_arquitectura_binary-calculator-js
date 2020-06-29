@@ -4,10 +4,18 @@ import { convertToDecimal, convertOneToOther } from '../../../lib/bCalculator'
 
 export default class Home extends Component {
 
+    constructor() {
+        super()
+        this.state = {
+            chan: "0"
+        }
+    }
+
     calculate = (event) => {
         event.preventDefault();
         if (this.state.n1 != null) {
             console.log("You are submitting " + this.state.n1 + " hola: " + convertOneToOther(this.state.n1 + "", 10, 2, 0));
+            this.setState({chan: convertOneToOther(this.state.n1 + "", 10, 2, 0)})
         }
     }
 
@@ -22,7 +30,7 @@ export default class Home extends Component {
             <div style={{ color: "#fff", textAlign: "center" }}>
 
                 <div style={{ margin: 32 }}>
-                    <h1 style={{ fontSize: "2rem" }}>1010.0101.0101.1010</h1>
+                    <h1 style={{ fontSize: "2rem" }}>{this.state.chan}</h1>
 
                     <div className="">
                         <div class="form-check form-check-inline">
