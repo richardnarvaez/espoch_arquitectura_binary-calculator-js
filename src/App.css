@@ -14,7 +14,8 @@ body{
   margin-bottom: 16px;
 }
 
-.check-select .form-check{
+
+.check-select + .form-check{
   margin-left: 16px;
 }
 

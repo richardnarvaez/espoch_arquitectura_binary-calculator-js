@@ -25,8 +25,10 @@ function occur(str, pattern) {
 }
 
 export function convertToDecimal(source, sourcebase) {
+
     var point = occur(source, '.');
     var comma = occur(source, ',');
+
     if ((point > 1 || comma > 1) ||
         (point > 0 && comma > 0)) {
         convertError = true;
@@ -56,6 +58,7 @@ export function convertToDecimal(source, sourcebase) {
         }
         dec += code * Math.pow(sourcebase, power++);
     }
+    
     return dec;
 }
 
