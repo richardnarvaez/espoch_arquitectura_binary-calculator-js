@@ -1,11 +1,10 @@
 let convertError = false;
 let convertPrecision = 0;
 
-function divideIntegers(one, base)
-{
-	var ends = new Array();
-	divide(one, base, ends);
-	return ends;
+function divideIntegers(one, base) {
+    var ends = new Array();
+    divide(one, base, ends);
+    return ends;
 }
 
 function divide(one, base, ends) {
@@ -16,54 +15,66 @@ function divide(one, base, ends) {
     else
         ends[ends.length] = res;
 }
-
-function occur(str, pattern) {
+/* Contabilizar las comas o puntos  */
+function countPattern(str, pattern) {
     var pos = str.indexOf(pattern);
     for (var count = 0; pos != -1; count++)
         pos = str.indexOf(pattern, pos + pattern.length);
     return count;
 }
-
+/* funcion de conversion a decimal */
 export function convertToDecimal(source, sourcebase) {
 
-    var point = occur(source, '.');
-    var comma = occur(source, ',');
+    var point = countPattern(source, '.');
+    var comma = countPattern(source, ',');
 
-    if ((point > 1 || comma > 1) ||
-        (point > 0 && comma > 0)) {
+    if ((point > 1 || comma > 1) || (point > 0 && comma > 0)) {
         convertError = true;
+        alert("No se puede convertir")
         return 0;
     }
 
+    /* Hallar lugar punto y coma */
     var pointplace = source.length - 1;
+
     if (point > 0)
         pointplace = source.indexOf('.');
     else if (comma > 0)
         pointplace = source.indexOf(',');
+
     var power = pointplace + 1 - source.length;
+    /* Hallar lugar punto y coma */
 
     var dec = 0;
 
     for (var i = source.length - 1; i >= 0; --i) {
+
         if (source.charAt(i) == '.' || source.charAt(i) == ',')
             continue;
+        /* LIMITAR SOLO NUMEROS */
         var code = source.charCodeAt(i);
         if (code >= 58)
-            code -= 55;
+            code -= 55; // HEXADECIMAL 
         else if (code >= 48)
-            code -= 48;
+            code -= 48; // NUMEROS
+
         if (code >= sourcebase) {
             convertError = true;
+            alert("La conversion no se puede realizar en esta base.")
             break;
         }
+
         dec += code * Math.pow(sourcebase, power++);
     }
-    
+
     return dec;
 }
 
+/*Funcion de conversion a distintas bases  */
 export function convertOneToOther(source, sourcebase, targetbase, targetprecision) {
+
     var decresult = convertToDecimal(source, sourcebase);
+
     if (convertError)
         return "0";
     else {
@@ -86,5 +97,42 @@ export function convertOneToOther(source, sourcebase, targetbase, targetprecisio
         return result;
     }
 }
+/*Funciones de complemento */
 
-export default { convertToDecimal, convertOneToOther }
+// function padZeros(num){
+// 	var res = num;
+// 	for(var i = 0; i < n-num.length; ++i)
+// 		res = "0" + res;
+// 	return res;
+// }
+
+function calcC1C2(input) {
+    // let n = input.length
+
+    // var upper = Math.pow(2, n)/2-1;
+    // var lower = -Math.pow(2, n)/2;
+
+    // if (input > upper || input < lower) {
+    //     console.log("representation:", )
+    //     .SetValue(res.overflow);
+    //     inverse.SetValue(res.overflow);
+    //     complement.SetValue(res.overflow);
+    // }
+    // else {
+    //     if (input >= 0) {
+    //         representation.SetValue(padZeros(input.toString(2)));
+    //         inverse.SetValue(padZeros(input.toString(2)));
+    //         complement.SetValue(padZeros(input.toString(2)));
+    //     }
+    //     else {
+    //         input = Math.abs(input);
+    //         representation.SetValue(padZeros(input.toString(2)));
+    //         var inv = (Math.pow(2, n) - 1) - input;
+    //         inverse.SetValue(padZeros(inv.toString(2)));
+    //         var com = inv + 1;
+    //         complement.SetValue(padZeros(com.toString(2)));
+    //     }
+    // }
+}
+
+export default { convertToDecimal, convertOneToOther, calcC1C2 }

@@ -1,11 +1,9 @@
 body{
-  background: #212121;
+  background: linear-gradient(45deg,#5212ec, #9240ff);
 }
 .card{
   margin: 16px;
   padding: 16px;
-  background: #313131;
-  color: white;
   border-radius: 12px;
 }
 
