@@ -15,6 +15,8 @@ export default class Home extends Component {
             Dec: "0",
             c1: "0",
             c2: "0",
+            cm1: "0",
+            cm2: "0",
             ndecim: "0",
             resultcalSRBin: "00000000",
             resultcalSRBin_2: "00000000",
@@ -33,14 +35,27 @@ export default class Home extends Component {
         event.preventDefault();
         let base = this.state.base != "" ? this.state.base : 10
         let ndecim = this.state.ndecim != "" ? this.state.ndecim : 0
+
         if (this.state.n1 != null) {
             if (this.state.n1 >= 0) {
-                this.setState({ chan: convertOneToOther(this.state.n1 + "", base, 2, ndecim) })
-                this.setState({ hex2: convertOneToOther(this.state.n1 + "", base, 16, ndecim) })
-                this.setState({ oct: convertOneToOther(this.state.n1 + "", base, 8, ndecim) })
+                let binn = convertOneToOther(this.state.n1 + "", base, 2, ndecim);
+                this.setState({
+                    chan: binn,
+                    hex2: convertOneToOther(this.state.n1 + "", base, 16, ndecim),
+                    oct: convertOneToOther(this.state.n1 + "", base, 8, ndecim),
+                    cm1: binn,
+                    cm2: binn,
+                })
+
             } else if (this.state.n1 < 0) {
-                console.log(calcC1C2(this.state.c1))
-                // let { com1, com2 } = calcC1C2(this.state.c2)
+                let cmm = calcC1C2(this.state.n1)
+                this.setState({
+                    chan: "Syntax Error",
+                    hex2: "Syntax Error",
+                    oct: "Syntax Error",
+                    cm1: cmm.com1,
+                    cm2: cmm.com2,
+                })
             }
         }
 
@@ -68,6 +83,7 @@ export default class Home extends Component {
         let res_com = convertOneToOther(Math.abs(res) + "", 10, 2, 0)
 
         this.setState({
+            rang: n1.rang + " | " + n2.rang,
             resultcalSRBin: n1.binario,
             resultcalSRBin_2: n2.binario,
             resultcalSRC1: n1.com1,
@@ -87,6 +103,7 @@ export default class Home extends Component {
         let res_com = convertOneToOther(Math.abs(res) + "", 10, 2, 0)
 
         this.setState({
+            rang: n1.rang + " | " + n2.rang,
             resultcalSRBin: n1.binario,
             resultcalSRBin_2: n2.binario,
             resultcalSRC1: n1.com1,
@@ -135,13 +152,13 @@ export default class Home extends Component {
 
                         <div className="d-flex" style={{ alignItems: "flex-end", justifyContent: "center" }}>
                             {{
-                                    'op1': <><h1 style={{ fontSize: "3rem" }}>{this.state.chan}</h1> <p>BIN</p></>,
-                                    'op2': <><h1 style={{ fontSize: "3rem" }}>{this.state.hex2}</h1><p>HEX</p></>,
-                                    'op3': <><h1 style={{ fontSize: "3rem" }}>{this.state.oct}</h1><p>OCT</p></>,
-                                    'op4': <><h1 style={{ fontSize: "3rem" }}>{this.state.c1}</h1><p>CM1</p></>,
-                                    'op5': <><h1 style={{ fontSize: "3rem" }}>{this.state.c2}</h1><p>CM2</p></>
-                                    
-                                }[this.state.selectedOption]
+                                'op1': <><h1 style={{ fontSize: "3rem" }}>{this.state.chan}</h1> <p>BIN</p></>,
+                                'op2': <><h1 style={{ fontSize: "3rem" }}>{this.state.hex2}</h1><p>HEX</p></>,
+                                'op3': <><h1 style={{ fontSize: "3rem" }}>{this.state.oct}</h1><p>OCT</p></>,
+                                'op4': <><h1 style={{ fontSize: "3rem" }}>{this.state.cm1}</h1><p>CM1</p></>,
+                                'op5': <><h1 style={{ fontSize: "3rem" }}>{this.state.cm2}</h1><p>CM2</p></>
+
+                            }[this.state.selectedOption]
                             }
                         </div>
                         {/* <div className="d-flex" style={{ alignItems: "flex-end", justifyContent: "flex-end" }}><h1 style={{ fontSize: "2rem" }}></div>
@@ -163,7 +180,13 @@ export default class Home extends Component {
                                         <svg style={{ width: 24, height: 24 }} viewBox="0 0 24 24">
                                             <path fill="currentColor" d="M21,9L17,5V8H10V10H17V13M7,11L3,15L7,19V16H14V14H7V11Z" />
                                         </svg>
-                                        <div style={{ marginLeft: 16 }}>
+                                        <div style={{
+                                            marginLeft: 16,
+                                            maxWidth: 200,
+                                            whiteSpace: "nowrap",
+                                            overflow: "hidden",
+                                            textOverflow: "ellipsis"
+                                        }}>
                                             <p style={{ fontWeight: "bold", textDecoration: "none" }}>Convertir</p>
                                             <p>Realiza conversiones a distintas bases</p>
                                         </div>
@@ -185,7 +208,7 @@ export default class Home extends Component {
                                         <small id="emailHelp" className="form-text text-muted">Numero </small>
                                     </div>
 
-                                    <div style={{padding: "16px 0"}}>
+                                    <div style={{ padding: "16px 0" }}>
                                         <div class="form-check form-check-inline">
                                             <input checked={this.state.selectedOption === 'op1'} onChange={this.radioChange} class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="op1" />
                                             <label class="form-check-label" for="inlineRadio1">BIN</label>
@@ -233,13 +256,17 @@ export default class Home extends Component {
 
                         <div>
                             <div className="card-header" id="headingTwo">
-                                <h2 className="mb-0">
                                     <button className="btn btn-link btn-block text-left collapsed" style={{ color: "#000", display: "flex", alignItems: "center", justifyContent: "space-between" }} type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        <div className="d-flex" style={{ display: "flex", alignItems: "center" }}>
+                                        <div className="d-flex" style={{ alignItems: "center" }}>
                                             <svg style={{ width: 24, height: 24 }} viewBox="0 0 24 24">
                                                 <path fill="currentColor" d="M9,2H4A2,2 0 0,0 2,4V9A2,2 0 0,0 4,11H9A2,2 0 0,0 11,9V4A2,2 0 0,0 9,2M9,7H4V6H9V7M20,13H15A2,2 0 0,0 13,15V20A2,2 0 0,0 15,22H20A2,2 0 0,0 22,20V15A2,2 0 0,0 20,13M20,19H15V18H20V19M20,17H15V16H20V17M20,2H15A2,2 0 0,0 13,4V9A2,2 0 0,0 15,11H20A2,2 0 0,0 22,9V4A2,2 0 0,0 20,2M20,7H18V9H17V7H15V6H17V4H18V6H20V7M9,13H4A2,2 0 0,0 2,15V20A2,2 0 0,0 4,22H9A2,2 0 0,0 11,20V15A2,2 0 0,0 9,13M8.62,18.91L7.91,19.62L6.5,18.21L5.09,19.62L4.38,18.91L5.79,17.5L4.38,16.09L5.09,15.38L6.5,16.79L7.91,15.38L8.62,16.09L7.21,17.5L8.62,18.91Z" />
                                             </svg>
-                                            <div style={{ marginLeft: 16 }}>
+                                            <div className="flex-grow-1" style={{
+                                                marginLeft: 16,
+                                                whiteSpace: "nowrap",
+                                                overflow: "hidden",
+                                                textOverflow: "ellipsis"
+                                            }}>
                                                 <p style={{ fontWeight: "bold", textDecoration: "none" }}>Operaciones</p>
                                                 <p>Realiza sumas, restas con las bases</p>
                                             </div>
@@ -249,7 +276,6 @@ export default class Home extends Component {
                                             <path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
                                         </svg>
                                     </button>
-                                </h2>
                             </div>
                             <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                 <div className="card-body" style={{ color: "#000" }}>
@@ -315,7 +341,13 @@ export default class Home extends Component {
                                             <svg style={{ width: 24, height: 24 }} viewBox="0 0 24 24">
                                                 <path fill="currentColor" d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" />
                                             </svg>
-                                            <div style={{ marginLeft: 16 }}>
+                                            <div style={{
+                                                marginLeft: 16,
+                                                maxWidth: 200,
+                                                whiteSpace: "nowrap",
+                                                overflow: "hidden",
+                                                textOverflow: "ellipsis"
+                                            }}>
                                                 <p style={{ fontWeight: "bold", textDecoration: "none" }}>
                                                     Informacion</p>
                                                 <p>Version, desarrolladores y mas</p>
@@ -402,7 +434,7 @@ export default class Home extends Component {
                     </li>
                 </ul> */}
 
-            </div>
+            </div >
         );
     }
 }

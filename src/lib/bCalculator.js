@@ -114,39 +114,38 @@ function padZeros(num) {
 
 export function calcC1C2(input) {
 
+    if (input.length <= 8) {
+        n = 8
+    } else if (input.length <= 16) {
+        n = 16
+    } else if (input.length <= 32) {
+        n = 32
+    } else if (input.length <= 64) {
+        n = 64
+    } else if (input.length <= 128) {
+        n = 128
+    }
+
     input = input === undefined ? -12 : input;
 
     var upper = Math.pow(2, (n - 1)) - 1; // Math.pow(2, n) / 2 - 1;
     var lower = -Math.pow(2, (n - 1)); //-Math.pow(2, n) / 2;
-    let rang = "[" + lower + "," + upper + "]"
 
-    console.log("N:", n)
-    console.log("UP:", upper,)
-    console.log("LOW:", lower)
+    let rang = "[" + lower + "," + upper + "]"
 
     if (input > upper || input < lower) {
         console.log("Overflow")
     } else {
         if (input >= 0) {
-            // console.log("MAYOR")
             input = Math.abs(input);
-            // console.log("Repre:", padZeros(input.toString(2)))
-            // console.log("C1:", padZeros(input.toString(2)))
-            // console.log("C2:", padZeros(input.toString(2)))
-
             let binario = padZeros(input.toString(2))
             let com1 = padZeros(input.toString(2))
             let com2 = padZeros(input.toString(2))
-
             return { binario, com1, com2, rang }
         } else {
             input = Math.abs(input);
-            console.log("Repre:", padZeros(input.toString(2)))
             var inv = (Math.pow(2, n) - 1) - input;
-            console.log("C1:", padZeros(inv.toString(2)))
             var com = inv + 1;
-            console.log("C2:", padZeros(com.toString(2)))
-
             let binario = padZeros(input.toString(2))
             let com1 = padZeros(inv.toString(2))
             let com2 = padZeros(com.toString(2))
