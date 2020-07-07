@@ -1,6 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700");
+
 body{
   background: linear-gradient(45deg,#5212ec, #9240ff);
+  font-family: 'Roboto Mono', monospace;
 }
+
+p{
+  margin: 0;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1rem;
+}
+
+.resultados p{
+  margin-left: 8px;
+}
+
+.resultados h1{
+  font-family: 'Montserrat', sans-serif;
+}
+
 .card{
   margin: 16px;
   padding: 16px;
@@ -26,12 +52,6 @@ body{
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -55,3 +75,26 @@ body{
     transform: rotate(360deg);
   }
 }
+
+
+@media (max-width: 576px) { 
+  html {
+    font-size: 14px;
+  }
+ }
+
+@media (min-width: 768px) { 
+  html {
+    font-size: 15px;
+  }
+ }
+
+@media (min-width: 992px) { 
+  html {
+    font-size: 16px;
+} }
+
+@media (min-width: 1200px) { 
+  html {
+    font-size: 17px;
+} }

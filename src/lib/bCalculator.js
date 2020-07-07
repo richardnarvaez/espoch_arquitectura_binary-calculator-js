@@ -15,6 +15,7 @@ function divide(one, base, ends) {
     else
         ends[ends.length] = res;
 }
+
 /* Contabilizar las comas o puntos  */
 function countPattern(str, pattern) {
     var pos = str.indexOf(pattern);
@@ -22,6 +23,7 @@ function countPattern(str, pattern) {
         pos = str.indexOf(pattern, pos + pattern.length);
     return count;
 }
+
 /* funcion de conversion a decimal */
 export function convertToDecimal(source, sourcebase) {
 
@@ -97,42 +99,60 @@ export function convertOneToOther(source, sourcebase, targetbase, targetprecisio
         return result;
     }
 }
+
+
+let n = 16 // Numnero de digitos // var n = __inp__["n"]===undefined?8:__inp__["n"];
+
+
 /*Funciones de complemento */
+function padZeros(num) {
+    var res = num;
+    for (var i = 0; i < n - num.length; ++i)
+        res = "0" + res;
+    return res;
+}
 
-// function padZeros(num){
-// 	var res = num;
-// 	for(var i = 0; i < n-num.length; ++i)
-// 		res = "0" + res;
-// 	return res;
-// }
+export function calcC1C2(input) {
 
-function calcC1C2(input) {
-    // let n = input.length
+    input = input === undefined ? -12 : input;
 
-    // var upper = Math.pow(2, n)/2-1;
-    // var lower = -Math.pow(2, n)/2;
+    var upper = Math.pow(2, (n - 1)) - 1; // Math.pow(2, n) / 2 - 1;
+    var lower = -Math.pow(2, (n - 1)); //-Math.pow(2, n) / 2;
+    let rang = "[" + lower + "," + upper + "]"
 
-    // if (input > upper || input < lower) {
-    //     console.log("representation:", )
-    //     .SetValue(res.overflow);
-    //     inverse.SetValue(res.overflow);
-    //     complement.SetValue(res.overflow);
-    // }
-    // else {
-    //     if (input >= 0) {
-    //         representation.SetValue(padZeros(input.toString(2)));
-    //         inverse.SetValue(padZeros(input.toString(2)));
-    //         complement.SetValue(padZeros(input.toString(2)));
-    //     }
-    //     else {
-    //         input = Math.abs(input);
-    //         representation.SetValue(padZeros(input.toString(2)));
-    //         var inv = (Math.pow(2, n) - 1) - input;
-    //         inverse.SetValue(padZeros(inv.toString(2)));
-    //         var com = inv + 1;
-    //         complement.SetValue(padZeros(com.toString(2)));
-    //     }
-    // }
+    console.log("N:", n)
+    console.log("UP:", upper,)
+    console.log("LOW:", lower)
+
+    if (input > upper || input < lower) {
+        console.log("Overflow")
+    } else {
+        if (input >= 0) {
+            // console.log("MAYOR")
+            input = Math.abs(input);
+            // console.log("Repre:", padZeros(input.toString(2)))
+            // console.log("C1:", padZeros(input.toString(2)))
+            // console.log("C2:", padZeros(input.toString(2)))
+
+            let binario = padZeros(input.toString(2))
+            let com1 = padZeros(input.toString(2))
+            let com2 = padZeros(input.toString(2))
+
+            return { binario, com1, com2, rang }
+        } else {
+            input = Math.abs(input);
+            console.log("Repre:", padZeros(input.toString(2)))
+            var inv = (Math.pow(2, n) - 1) - input;
+            console.log("C1:", padZeros(inv.toString(2)))
+            var com = inv + 1;
+            console.log("C2:", padZeros(com.toString(2)))
+
+            let binario = padZeros(input.toString(2))
+            let com1 = padZeros(inv.toString(2))
+            let com2 = padZeros(com.toString(2))
+            return { binario, com1, com2, rang }
+        }
+    }
 }
 
 export default { convertToDecimal, convertOneToOther, calcC1C2 }

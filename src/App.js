@@ -14,16 +14,12 @@ function App() {
   return (
 
     <Router>
-      <div>
-        <div>
-          <Switch>
-            <Route exact path={ROUTES.LANDING} component={Index} />
-            <Route path={ROUTES.HOME} component={Home} />
-            <Route path={ROUTES.ABOUT} component={About} />
-            <Route component={NotFound} />
-          </Switch>
-        </div>
-      </div>
+      <Switch>
+        <Route exact path={ROUTES.LANDING} component={Home} />
+        {/* <Route path={ROUTES.HOME} component={} /> */}
+        {/* <Route path={ROUTES.ABOUT} component={About} /> */}
+        <Route component={NotFound} />
+      </Switch>
     </Router>
   );
 }
