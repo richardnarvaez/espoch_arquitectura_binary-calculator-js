@@ -181,7 +181,7 @@ export default class Home extends Component {
                                 <form style={{ textAlign: "left", color: "#000", padding: 16 }} onSubmit={this.transform}>
                                     <div className="form-group">
                                         <label htmlFor="exampleInputEmail1">Numero Original</label>
-                                        <input onChange={this.inputChange} type="text" name="n1" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="0" />
+                                        <input style={{fontSize: "2rem", textAlign: "right"}} onChange={this.inputChange} type="text" name="n1" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="0" />
                                         <small id="emailHelp" className="form-text text-muted">Numero </small>
                                     </div>
 
@@ -258,12 +258,12 @@ export default class Home extends Component {
 
                                     <div style={{ color: "#fff", textAlign: "left" }} onSubmit={this.calculate}>
                                         <div className="form-group">
-                                            <input style={{ textAlign: "right" }} onChange={this.inputChange} type="text" name="cn1" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="0" />
+                                            <input style={{ textAlign: "right", fontSize: "2rem" }} onChange={this.inputChange} type="text" name="cn1" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="0" />
                                             <small id="emailHelp" className="form-text text-muted">Ingrese un numero decimal</small>
                                         </div>
 
                                         <div className="form-group">
-                                            <input style={{ textAlign: "right" }} onChange={this.inputChange} type="text" name="cn2" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="0" />
+                                            <input style={{ textAlign: "right", fontSize: "2rem" }} onChange={this.inputChange} type="text" name="cn2" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="0" />
                                             <small id="emailHelp" className="form-text text-muted">Ingrese un numero decimal</small>
 
                                         </div>

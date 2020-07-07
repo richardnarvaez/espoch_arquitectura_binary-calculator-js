@@ -101,7 +101,7 @@ export function convertOneToOther(source, sourcebase, targetbase, targetprecisio
 }
 
 
-let n = 16 // Numnero de digitos // var n = __inp__["n"]===undefined?8:__inp__["n"];
+let n = 4 // Numnero de digitos // var n = __inp__["n"]===undefined?8:__inp__["n"];
 
 
 /*Funciones de complemento */
@@ -113,28 +113,28 @@ function padZeros(num) {
 }
 
 export function calcC1C2(input) {
-
-    if (input.length <= 8) {
-        n = 8
-    } else if (input.length <= 16) {
-        n = 16
-    } else if (input.length <= 32) {
-        n = 32
-    } else if (input.length <= 64) {
-        n = 64
-    } else if (input.length <= 128) {
-        n = 128
-    }
-
     input = input === undefined ? -12 : input;
 
-    var upper = Math.pow(2, (n - 1)) - 1; // Math.pow(2, n) / 2 - 1;
-    var lower = -Math.pow(2, (n - 1)); //-Math.pow(2, n) / 2;
+    var upper = Math.pow(2, (n - 1)) - 1;  // Math.pow(2, n) / 2 - 1;
+    var lower = -Math.pow(2, (n - 1));  
+
+    while (input > upper || input < lower) {
+        n = n * 2 ;
+        var upper = Math.pow(2, (n - 1)) - 1;  // Math.pow(2, n) / 2 - 1;
+        var lower = -Math.pow(2, (n - 1));     //-Math.pow(2, n) / 2;
+        console.log("NUM: ", n)
+    }
+
 
     let rang = "[" + lower + "," + upper + "]"
 
     if (input > upper || input < lower) {
         console.log("Overflow")
+        let binario = "System Error"
+        let com1 = "System Error"
+        let com2 = "System Error"
+
+        return { binario, com1, com2, rang }
     } else {
         if (input >= 0) {
             input = Math.abs(input);
