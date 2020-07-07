@@ -32,7 +32,7 @@ export function convertToDecimal(source, sourcebase) {
 
     if ((point > 1 || comma > 1) || (point > 0 && comma > 0)) {
         convertError = true;
-        alert("No se puede convertir")
+        // alert("No se puede convertir")
         return 0;
     }
 
@@ -62,7 +62,7 @@ export function convertToDecimal(source, sourcebase) {
 
         if (code >= sourcebase) {
             convertError = true;
-            alert("La conversion no se puede realizar en esta base.")
+            // alert("La conversion no se puede realizar en esta base.")
             break;
         }
 
@@ -113,18 +113,17 @@ function padZeros(num) {
 }
 
 export function calcC1C2(input) {
+    n = 4
     input = input === undefined ? -12 : input;
 
-    var upper = Math.pow(2, (n - 1)) - 1;  // Math.pow(2, n) / 2 - 1;
+    var upper = Math.pow(2, (n - 1)) - 1;
     var lower = -Math.pow(2, (n - 1));  
 
     while (input > upper || input < lower) {
-        n = n * 2 ;
+        n = n * 2;
         var upper = Math.pow(2, (n - 1)) - 1;  // Math.pow(2, n) / 2 - 1;
         var lower = -Math.pow(2, (n - 1));     //-Math.pow(2, n) / 2;
-        console.log("NUM: ", n)
     }
-
 
     let rang = "[" + lower + "," + upper + "]"
 
