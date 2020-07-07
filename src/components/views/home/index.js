@@ -61,20 +61,7 @@ export default class Home extends Component {
 
     }
 
-    calculate = (event) => {
-        event.preventDefault();
 
-        // if (this.state.cn1 != null) {
-        //     if (this.state.cn1 >= 0) {
-        //         this.setState({ resultcalSuma: convertOneToOther(this.state.cn1 + "", 10, 2, 0) + " + " + convertOneToOther(this.state.cn2 + "", 10, 2, 0) + " = " + convertOneToOther((parseInt(this.state.cn1) + parseInt(this.state.cn2)) + "", 10, 2, 0) })
-
-        //         this.setState({ resultcalResta: convertOneToOther(this.state.cn1 + "", 10, 2, 0) + " - " + convertOneToOther(this.state.cn2 + "", 10, 2, 0) + " = " + convertOneToOther((this.state.cn1 - this.state.cn2) + "", 10, 2, 0) })
-        //     }
-        //     else {
-
-        //     }
-        // }
-    }
 
     suma = () => {
         let n1 = calcC1C2(this.state.cn1);
@@ -140,7 +127,7 @@ export default class Home extends Component {
                 <div style={{ color: "#fff" }} className="container">
 
                     <div style={{ margin: 16, display: "flex", alignItems: "center", textAlign: "center", flexDirection: "column" }}>
-                        <img style={{ width: 42, height: 42, marginTop: 16 }} src="https://cimogsys.espoch.edu.ec/idi/public/img/logos/espoch.png" />
+                        <img style={{ height: 72, marginTop: 16 }} src="../img/logo_espoch.png" />
                         <div style={{ marginLeft: 8 }}>
                             <h2 className="mt-3" style={{ fontWeight: "bold" }}>ESCUELA SUPERIOR POLITECNICA DE CHIMBORAZO</h2>
                             <h2>Arquitectura de computadores 4A</h2>
@@ -161,10 +148,6 @@ export default class Home extends Component {
                             }[this.state.selectedOption]
                             }
                         </div>
-                        {/* <div className="d-flex" style={{ alignItems: "flex-end", justifyContent: "flex-end" }}><h1 style={{ fontSize: "2rem" }}></div>
-                        <div className="d-flex" style={{ alignItems: "flex-end", justifyContent: "flex-end" }}><h1 style={{ fontSize: "2rem" }}></div>
-                        <div className="d-flex" style={{ alignItems: "flex-end", justifyContent: "flex-end" }}><h1 style={{ fontSize: "2rem" }}></p></div>
-                        <div className="d-flex" style={{ alignItems: "flex-end", justifyContent: "flex-end" }}><h1 style={{ fontSize: "2rem" }}>/p></div> */}
 
                     </div>
 
@@ -176,17 +159,11 @@ export default class Home extends Component {
                         <div>
                             <div className="card-header" id="headingOne">
                                 <button className="btn btn-link btn-block text-left collapsed" style={{ color: "#000", display: "flex", alignItems: "center", justifyContent: "space-between" }} type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <div className="d-flex" style={{ display: "flex", alignItems: "center" }}>
+                                    <div className="d-flex ttmsA_6" style={{ alignItems: "center" }}>
                                         <svg style={{ width: 24, height: 24 }} viewBox="0 0 24 24">
                                             <path fill="currentColor" d="M21,9L17,5V8H10V10H17V13M7,11L3,15L7,19V16H14V14H7V11Z" />
                                         </svg>
-                                        <div style={{
-                                            marginLeft: 16,
-                                            maxWidth: 200,
-                                            whiteSpace: "nowrap",
-                                            overflow: "hidden",
-                                            textOverflow: "ellipsis"
-                                        }}>
+                                        <div className="ttmsA_6" style={{ marginLeft: 16 }}>
                                             <p style={{ fontWeight: "bold", textDecoration: "none" }}>Convertir</p>
                                             <p>Realiza conversiones a distintas bases</p>
                                         </div>
@@ -233,20 +210,6 @@ export default class Home extends Component {
                                         </div>
                                     </div>
 
-
-                                    {/* <div className="d-flex" >
-                                        <div className="form-group">
-                                            <label htmlFor="exampleInputEmail1">Base</label>
-                                            <input onChange={this.inputChange} type="text" name="base" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seleccionar la base" />
-                                            <small id="emailHelp" className="form-text text-muted">Por defecto es DECIMAL</small>
-                                        </div>
-                                        <div className="form-group" style={{ marginLeft: 16}}>
-                                            <label htmlFor="exampleInputEmail1">Num Decimales</label>
-                                            <input onChange={this.inputChange} type="text" name="ndecim" className="form-control" placeholder="Seleccionar el numero de decimales" />
-                                            <small id="emailHelp" className="form-text text-muted">Por defecto es 0</small>
-                                        </div>
-                                    </div> */}
-
                                     <button type="submit" className="btn btn-primary">Convertir</button>
 
                                 </form>
@@ -256,26 +219,21 @@ export default class Home extends Component {
 
                         <div>
                             <div className="card-header" id="headingTwo">
-                                    <button className="btn btn-link btn-block text-left collapsed" style={{ color: "#000", display: "flex", alignItems: "center", justifyContent: "space-between" }} type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        <div className="d-flex" style={{ alignItems: "center" }}>
-                                            <svg style={{ width: 24, height: 24 }} viewBox="0 0 24 24">
-                                                <path fill="currentColor" d="M9,2H4A2,2 0 0,0 2,4V9A2,2 0 0,0 4,11H9A2,2 0 0,0 11,9V4A2,2 0 0,0 9,2M9,7H4V6H9V7M20,13H15A2,2 0 0,0 13,15V20A2,2 0 0,0 15,22H20A2,2 0 0,0 22,20V15A2,2 0 0,0 20,13M20,19H15V18H20V19M20,17H15V16H20V17M20,2H15A2,2 0 0,0 13,4V9A2,2 0 0,0 15,11H20A2,2 0 0,0 22,9V4A2,2 0 0,0 20,2M20,7H18V9H17V7H15V6H17V4H18V6H20V7M9,13H4A2,2 0 0,0 2,15V20A2,2 0 0,0 4,22H9A2,2 0 0,0 11,20V15A2,2 0 0,0 9,13M8.62,18.91L7.91,19.62L6.5,18.21L5.09,19.62L4.38,18.91L5.79,17.5L4.38,16.09L5.09,15.38L6.5,16.79L7.91,15.38L8.62,16.09L7.21,17.5L8.62,18.91Z" />
-                                            </svg>
-                                            <div className="flex-grow-1" style={{
-                                                marginLeft: 16,
-                                                whiteSpace: "nowrap",
-                                                overflow: "hidden",
-                                                textOverflow: "ellipsis"
-                                            }}>
-                                                <p style={{ fontWeight: "bold", textDecoration: "none" }}>Operaciones</p>
-                                                <p>Realiza sumas, restas con las bases</p>
-                                            </div>
-                                        </div>
-
+                                <button className="btn btn-link btn-block text-left collapsed" style={{ color: "#000", display: "flex", alignItems: "center", justifyContent: "space-between" }} type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <div className="d-flex ttmsA_6" style={{ alignItems: "center" }}>
                                         <svg style={{ width: 24, height: 24 }} viewBox="0 0 24 24">
-                                            <path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+                                            <path fill="currentColor" d="M9,2H4A2,2 0 0,0 2,4V9A2,2 0 0,0 4,11H9A2,2 0 0,0 11,9V4A2,2 0 0,0 9,2M9,7H4V6H9V7M20,13H15A2,2 0 0,0 13,15V20A2,2 0 0,0 15,22H20A2,2 0 0,0 22,20V15A2,2 0 0,0 20,13M20,19H15V18H20V19M20,17H15V16H20V17M20,2H15A2,2 0 0,0 13,4V9A2,2 0 0,0 15,11H20A2,2 0 0,0 22,9V4A2,2 0 0,0 20,2M20,7H18V9H17V7H15V6H17V4H18V6H20V7M9,13H4A2,2 0 0,0 2,15V20A2,2 0 0,0 4,22H9A2,2 0 0,0 11,20V15A2,2 0 0,0 9,13M8.62,18.91L7.91,19.62L6.5,18.21L5.09,19.62L4.38,18.91L5.79,17.5L4.38,16.09L5.09,15.38L6.5,16.79L7.91,15.38L8.62,16.09L7.21,17.5L8.62,18.91Z" />
                                         </svg>
-                                    </button>
+                                        <div className="ttmsA_6" style={{ marginLeft: 16 }}>
+                                            <p style={{ fontWeight: "bold", textDecoration: "none" }}>Operaciones</p>
+                                            <p>Realiza sumas y restas</p>
+                                        </div>
+                                    </div>
+
+                                    <svg style={{ width: 24, height: 24 }} viewBox="0 0 24 24">
+                                        <path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+                                    </svg>
+                                </button>
                             </div>
                             <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                 <div className="card-body" style={{ color: "#000" }}>
@@ -337,17 +295,11 @@ export default class Home extends Component {
                             <div className="card-header" id="headingThree">
                                 <h2 className="mb-0">
                                     <button className="btn btn-link btn-block text-left collapsed" style={{ color: "#000", display: "flex", alignItems: "center", justifyContent: "space-between" }} type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        <div className="d-flex" style={{ display: "flex", alignItems: "center" }}>
+                                        <div className="d-flex ttmsA_6" style={{alignItems: "center" }}>
                                             <svg style={{ width: 24, height: 24 }} viewBox="0 0 24 24">
                                                 <path fill="currentColor" d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" />
                                             </svg>
-                                            <div style={{
-                                                marginLeft: 16,
-                                                maxWidth: 200,
-                                                whiteSpace: "nowrap",
-                                                overflow: "hidden",
-                                                textOverflow: "ellipsis"
-                                            }}>
+                                            <div  className="ttmsA_6" style={{ marginLeft: 16 }}>
                                                 <p style={{ fontWeight: "bold", textDecoration: "none" }}>
                                                     Informacion</p>
                                                 <p>Version, desarrolladores y mas</p>
