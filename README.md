@@ -5,7 +5,7 @@ https://binarycalc.vercel.app/
 
 | #1 | 
 --- |
-|![s1](../screenshots/s_1.png)|
+|![s1](/screenshots/s_1.png)|
 
 
 | #1 | #2 | 
