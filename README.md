@@ -1,4 +1,17 @@
-This project for Computer Arquitecture.
+This project is for Computer Arquitecture.
+
+### Demo App
+https://binarycalc.vercel.app/
+
+| #1 | 
+--- |
+|![s1](../screenshots/s_1.png)|
+
+
+| #1 | #2 | 
+--- | --- 
+| ![S2](/screenshots/s2.png) |![s3](/screenshots/s3.png)  |
+
 
 ## Available Scripts
 
@@ -26,8 +39,7 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 
-### Demo App
-Coming soon
-
 ### Developers
+- Anderson Tufiño
+- Wilson Lluilema
 - Richard Vinueza
