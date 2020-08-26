@@ -1,7 +1,7 @@
 This project is for Computer Arquitecture.
 
 ### Demo App
-https://binarycalc.vercel.app/
+https://binaryjs.vercel.app/
 
 | #1 | 
 --- |
